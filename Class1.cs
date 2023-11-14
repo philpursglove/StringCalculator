@@ -22,12 +22,13 @@ namespace StringCalculator
             Assert.That(result, Is.EqualTo(1));
         }
 
-        [Test]
-        public void When_String_COntains_Two_Numbers_Return_The_Sum()
+        [TestCase(1,1,2)]
+        [TestCase(10,10,20)]
+        public void When_String_COntains_Two_Numbers_Return_The_Sum(int number1, int number2, int expectedResult)
         {
             StringCalculator calculator = new StringCalculator();
-            int result = calculator.Add("1,1");
-            Assert.That(result, Is.EqualTo(2));
+            int result = calculator.Add($"{number1},{number2}");
+            Assert.That(result, Is.EqualTo(expectedResult));
 
         }
     }
@@ -43,10 +44,9 @@ namespace StringCalculator
 
             if (numbers.IndexOf(",") > -1)
             {
-                int number1 = int.Parse(numbers.Substring(0, 1));
-                int number2 = int.Parse(numbers.Substring(2, 1));
+                List<string> numbersList = numbers.Split(",").ToList();
 
-                return number1 + number2;
+                return numbersList.Select(n => int.Parse(n)).Sum();
             }
             else
             {
