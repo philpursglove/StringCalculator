@@ -12,6 +12,15 @@ namespace StringCalculator
             int result = calculator.Add("");
             Assert.That(result, Is.EqualTo(0));
         }
+
+        [Test]
+        public void When_String_Contains_One_Number_Return_The_Number()
+        {
+
+            StringCalculator calculator = new StringCalculator();
+            int result = calculator.Add("1");
+            Assert.That(result, Is.EqualTo(1));
+        }
     }
 
     public class StringCalculator
@@ -23,7 +32,7 @@ namespace StringCalculator
                 return 0;
             }
 
-            return -1;
+            return int.Parse(numbers);
         }
     }
 }
