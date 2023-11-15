@@ -42,5 +42,12 @@ namespace StringCalculator
             _result = _calculator.Add("1,2,3,4,5,6,7,8,9");
             Assert.That(_result, Is.EqualTo(45));
         }
+
+        [Test]
+        public void When_We_Have_A_Newline_As_A_Separator_We_Dont_Break()
+        {
+            _result = _calculator.Add($"1,2{Environment.NewLine}3");
+            Assert.That(_result, Is.EqualTo(6));
+        }
     }
 }

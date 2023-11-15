@@ -9,6 +9,8 @@ public class StringCalculator
             return 0;
         }
 
+        numbers = numbers.Replace(Environment.NewLine, ",");
+
         if (numbers.IndexOf(",", StringComparison.InvariantCulture) > -1)
         {
             List<string> numbersList = numbers.Split(",").ToList();
