@@ -37,6 +37,13 @@ namespace StringCalculator
         }
 
         [Test]
+        public void Check_Negative_Numbers()
+        {
+            _result = _calculator.Add("10,-10");
+            Assert.That(_result, Is.EqualTo(0));
+        }
+
+        [Test]
         public void When_We_Have_An_Arbitrary_Number_Of_Numbers_We_Return_The_Sum()
         {
             _result = _calculator.Add("1,2,3,4,5,6,7,8,9");
