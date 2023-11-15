@@ -3,7 +3,7 @@
 namespace StringCalculator
 {
     [TestFixture]
-    public class Class1
+    public class StringCalculatorTests
     {
         [Test]
         public void When_String_Is_Empty_Return_Zero()
@@ -30,28 +30,6 @@ namespace StringCalculator
             int result = calculator.Add($"{number1},{number2}");
             Assert.That(result, Is.EqualTo(expectedResult));
 
-        }
-    }
-
-    public class StringCalculator
-    {
-        public int Add(string numbers)
-        {
-            if (String.IsNullOrEmpty(numbers))
-            {
-                return 0;
-            }
-
-            if (numbers.IndexOf(",") > -1)
-            {
-                List<string> numbersList = numbers.Split(",").ToList();
-
-                return numbersList.Select(n => int.Parse(n)).Sum();
-            }
-            else
-            {
-                return int.Parse(numbers);
-            }
         }
     }
 }
