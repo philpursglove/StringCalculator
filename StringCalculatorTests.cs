@@ -31,5 +31,13 @@ namespace StringCalculator
             Assert.That(result, Is.EqualTo(expectedResult));
 
         }
+
+        [Test]
+        public void When_We_Have_An_Arbitrary_Number_Of_Numbers_We_Return_The_Sum()
+        {
+            StringCalculator calculator = new StringCalculator();
+            int result = calculator.Add("1,2,3,4,5,6,7,8,9");
+            Assert.That(result, Is.EqualTo(45));
+        }
     }
 }
