@@ -4,12 +4,12 @@ public class StringCalculator
 {
     public int Add(string numbers)
     {
-        if (String.IsNullOrEmpty(numbers))
+        if (string.IsNullOrEmpty(numbers))
         {
             return 0;
         }
 
-        if (numbers.IndexOf(",") > -1)
+        if (numbers.IndexOf(",", StringComparison.InvariantCulture) > -1)
         {
             List<string> numbersList = numbers.Split(",").ToList();
 
