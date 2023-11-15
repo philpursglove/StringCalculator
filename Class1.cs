@@ -6,7 +6,7 @@ namespace StringCalculator
     public class Class1
     {
         [Test]
-        public void When_String_Is_EMpty_Return_Zero()
+        public void When_String_Is_Empty_Return_Zero()
         {
             StringCalculator calculator = new StringCalculator();
             int result = calculator.Add("");
@@ -24,7 +24,7 @@ namespace StringCalculator
 
         [TestCase(1,1,2)]
         [TestCase(10,10,20)]
-        public void When_String_COntains_Two_Numbers_Return_The_Sum(int number1, int number2, int expectedResult)
+        public void When_String_Contains_Two_Numbers_Return_The_Sum(int number1, int number2, int expectedResult)
         {
             StringCalculator calculator = new StringCalculator();
             int result = calculator.Add($"{number1},{number2}");
