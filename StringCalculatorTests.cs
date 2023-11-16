@@ -37,13 +37,6 @@ namespace StringCalculator
         }
 
         [Test]
-        public void Check_Negative_Numbers()
-        {
-            _result = _calculator.Add("10,-10");
-            Assert.That(_result, Is.EqualTo(0));
-        }
-
-        [Test]
         public void When_We_Have_An_Arbitrary_Number_Of_Numbers_We_Return_The_Sum()
         {
             _result = _calculator.Add("1,2,3,4,5,6,7,8,9");
@@ -65,6 +58,13 @@ namespace StringCalculator
             _result = _calculator.Add(numbersWithCustomSeparator);
             Assert.That(_result, Is.EqualTo(6));
 
+        }
+
+        [Test]
+        public void Throw_An_Exception_When_One_Or_More_Negative_Numbers_Are_Passed()
+        {
+            var exception = Assert.Throws<NegativeNumberException>(() => _calculator.Add("-1,-2"));
+            Assert.That(exception.Message, Is.EqualTo("Negatives not allowed: -1,-2"));
         }
     }
 }

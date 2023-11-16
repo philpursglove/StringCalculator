@@ -20,6 +20,11 @@ public class StringCalculator
             numbersList.AddRange(ParseNumbersString(numbers));
         }
 
+        if (numbersList.Any(n => n < 0))
+        {
+            throw new NegativeNumberException($"Negatives not allowed: {string.Join(",", numbersList.Where(n => n < 0))}");
+        }
+
         return numbersList.Sum();
     }
 
@@ -40,5 +45,12 @@ public class StringCalculator
 
             return numbersList.Select(n => int.Parse(n)).ToList();
         }
+    }
+}
+
+public class NegativeNumberException : Exception
+{
+    public NegativeNumberException(string message) : base(message)
+    {
     }
 }
