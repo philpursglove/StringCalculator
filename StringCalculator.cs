@@ -9,17 +9,34 @@ public class StringCalculator
             return 0;
         }
 
-        numbers = numbers.Replace(Environment.NewLine, ",");
-
-        if (numbers.IndexOf(",", StringComparison.InvariantCulture) > -1)
+        if (int.TryParse(numbers, out int numbersInteger))
         {
-            List<string> numbersList = numbers.Split(",").ToList();
-
-            return numbersList.Select(n => int.Parse(n)).Sum();
+            return numbersInteger;
         }
         else
         {
-            return int.Parse(numbers);
+            List<int> numbersList = ParseNumbersString(numbers);
+            return numbersList.Sum();
+        }
+
+    }
+
+    private List<int> ParseNumbersString(string numbers)
+    {
+        if (numbers.StartsWith("//"))
+        {
+            List<string> numbersLines = numbers.Split(Environment.NewLine).ToList();
+            string separator = numbersLines.First().Replace("//", string.Empty);
+
+            return numbersLines.Last().Split(separator).Select(x => int.Parse(x)).ToList();
+        }
+        else
+        {
+            numbers = numbers.Replace(Environment.NewLine, ",");
+
+            List<string> numbersList = numbers.Split(",").ToList();
+
+            return numbersList.Select(n => int.Parse(n)).ToList();
         }
     }
 }

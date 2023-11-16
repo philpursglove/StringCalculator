@@ -56,5 +56,15 @@ namespace StringCalculator
             _result = _calculator.Add($"1,2{Environment.NewLine}3");
             Assert.That(_result, Is.EqualTo(6));
         }
+
+        [TestCase("//;\r\n1;2;3")]
+        [TestCase("///\r\n1/2/3")]
+        [TestCase("//.\r\n1.2.3")]
+        public void Allow_Custom_Separators(string numbersWithCustomSeparator)
+        {
+            _result = _calculator.Add(numbersWithCustomSeparator);
+            Assert.That(_result, Is.EqualTo(6));
+
+        }
     }
 }
