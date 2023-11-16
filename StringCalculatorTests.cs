@@ -6,7 +6,7 @@ namespace StringCalculator
     public class StringCalculatorTests
     {
         private StringCalculator _calculator;
-        private int _result = 0;
+        private int _result;
 
         [SetUp]
         public void Setup()
