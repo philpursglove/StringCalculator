@@ -9,16 +9,18 @@ public class StringCalculator
             return 0;
         }
 
+        List<int> numbersList = new List<int>();
+
         if (int.TryParse(numbers, out int numbersInteger))
         {
-            return numbersInteger;
+            numbersList.Add(numbersInteger);
         }
         else
         {
-            List<int> numbersList = ParseNumbersString(numbers);
-            return numbersList.Sum();
+            numbersList.AddRange(ParseNumbersString(numbers));
         }
 
+        return numbersList.Sum();
     }
 
     private List<int> ParseNumbersString(string numbers)
