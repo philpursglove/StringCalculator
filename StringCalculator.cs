@@ -25,7 +25,7 @@ public class StringCalculator
             throw new NegativeNumberException($"Negatives not allowed: {string.Join(",", numbersList.Where(n => n < 0))}");
         }
 
-        return numbersList.Sum();
+        return numbersList.Where(n => n < 1001).Sum();
     }
 
     private List<int> ParseNumbersString(string numbers)
